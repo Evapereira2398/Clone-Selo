@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tradução Automatica</title>
+</head>
+<body>
+  <h1>Adicionando funcionalidade de tradução automatica</h1>
+  <h2>Utilizando a API do Google Translate</h2>
+
+  <h1>Adicionando funcionalidade de tradução automatica</h1>
+  <h2>Utilizando a API do Google Translate</h2>
+
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script>
+    function translatePage(language) {
+      var elements = document.querySelectorAll('[data-translate="true"]');
+      elements.forEach(function(element) {
+        var originalText = element.innerText;
+        google.translate.translatePageElement({ element: element, pageLanguage: 'en', targetLanguage: language });
+      });
+    }
+
+    function detectLanguageAndTranslate() {
+      var defaultLanguage = google.translate.getLang();
+      translatePage(defaultLanguage);
+    }
+
+    function googleTranslateElementInit() {
+      google.translate.detectLanguage(detectLanguageAndTranslate);
+    }
+  </script>
+</body>
+</html>
